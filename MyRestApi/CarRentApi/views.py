@@ -1,6 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
 from CarRentApi.models import UserProfile,Test,Owner,Customer,Book
-from CarRentApi.serailizers import OwnerProfileSerializer,CustomerProfileSerializer,BookSerializer
+from CarRentApi.serailizers import OwnerProfileSerializer,CustomerProfileSerializer,BookSerializer,UserProfileSerializer
 # Create your views here.
 class OwnerProfileViewSet(ModelViewSet):
     serializer_class = OwnerProfileSerializer
@@ -9,6 +9,10 @@ class OwnerProfileViewSet(ModelViewSet):
 class CustomerProfileViewSet(ModelViewSet):
     serializer_class = CustomerProfileSerializer
     queryset = Customer.objects.all()
+
+class UserProfileViewSet(ModelViewSet):
+    serializer_class =UserProfileSerializer 
+    queryset = UserProfile.objects.all()
 
 class OrderViewSet(ModelViewSet):
     serializer_class = BookSerializer

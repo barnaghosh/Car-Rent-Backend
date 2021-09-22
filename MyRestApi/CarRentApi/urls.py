@@ -11,6 +11,7 @@ router = DefaultRouter()
 router.register(r"customer", views.CustomerProfileViewSet)
 router.register(r"owner", views.OwnerProfileViewSet)
 router.register(r"book", views.OrderViewSet)
+router.register(r"user", views.UserProfileViewSet)
 urlpatterns = [
        path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),

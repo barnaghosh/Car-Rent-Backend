@@ -144,8 +144,24 @@
 
 
 
+from rest_framework import fields
 from rest_framework.serializers import ModelSerializer
 from CarRentApi.models import UserProfile,Owner,Customer,Book
+
+class UserProfileSerializer(ModelSerializer):
+    class Meta:
+        model = UserProfile
+        fields='__all__'
+        extra_kwargs = {
+            "password": {"write_only": True, "style": {"input_type": "password"}}
+        }
+    def create(self, validated_data):
+        user = UserProfile.objects.create_customer(
+            email=validated_data["email"],
+            password=validated_data["password"],
+        )
+
+        return user
 
 class OwnerUserProfileSerializer(ModelSerializer):
     class Meta:
